@@ -1,0 +1,56 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{csu-proposal}[2026/11/25 CSU proposal forms]
+\RequirePackage[a4paper,top=25.4mm,bottom=25.4mm,left=31.75mm,right=31.75mm]{geometry}
+\RequirePackage{fontspec,graphicx,amsmath,amssymb,booktabs,tabularx,array,multirow}
+\RequirePackage{tikz,eso-pic}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[backend=biber,style=gb7714-2015,gbnamefmt=uppercase,gbpub=false,gbpunctin=false,gbalign=gb7714-2015]{biblatex}
+\addbibresource{references.bib}
+\renewcommand{\bibfont}{\fontsize{10.5bp}{15.6bp}\selectfont\songti}
+\setmainfont{Times New Roman}
+\setCJKmainfont[AutoFakeBold=2.17]{SimSun}
+\setCJKsansfont{SimHei}
+\setCJKfamilyfont{song}[AutoFakeBold=2.17]{SimSun}
+\setCJKfamilyfont{hei}{SimHei}
+\providecommand{\songti}{\CJKfamily{song}}
+\providecommand{\heiti}{\CJKfamily{hei}}
+\setCJKmonofont{FangSong}
+\newCJKfontfamily\kgb{KaiTi_GB2312.ttf}
+\graphicspath{{images/}}
+\setlength{\parindent}{2em}
+\linespread{1.3}
+\pagestyle{plain}
+% 新增小节、图表及公式的示例样式。
+\RequirePackage{caption,longtable,needspace}
+\usetikzlibrary{arrows.meta,positioning}
+\ctexset{subsection={format=\songti\bfseries\fontsize{10.5bp}{15.6bp}\selectfont,beforeskip=7bp,afterskip=4bp}}
+\counterwithin{equation}{section}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\DeclareCaptionFont{wordfont}{\fontsize{10.5bp}{15.6bp}\selectfont\songti}
+\captionsetup{font=wordfont,labelsep=quad,skip=5bp,hypcap=false}
+
+% 中南大学底纹：纯 LaTeX 文字绘制，不改变正文和表格坐标。
+% 开关放在 main.tex；默认 false，主文件主动开启。
+\newif\ifCSUWatermark
+\newcommand{\EnableCSUWatermark}{\CSUWatermarktrue}
+\newcommand{\DisableCSUWatermark}{\CSUWatermarkfalse}
+\AddToHook{shipout/foreground}{%
+\ifCSUWatermark
+\begin{tikzpicture}[remember picture,overlay]
+\foreach \x in {15,65,115,165,215}{%
+\foreach \y in {20,70,120,170,220,270}{%
+\node[rotate=35,text=black,opacity=.08,inner sep=0pt,
+font=\kgb\fontsize{16bp}{20bp}\selectfont]
+at ([xshift=\x mm,yshift=-\y mm]current page.north west) {中\quad 南\quad 大\quad 学};}}
+\end{tikzpicture}
+\fi}
+
+% Word 宋体的原生字形。描边宽度用于匹配 Word 的加粗效果。
+\setCJKfamilyfont{wordSong}{SimSun}
+\newcommand{\WordGlyph}[4]{\begingroup\mdseries\fontsize{#1bp}{#1bp}\selectfont#3\xeCJKsetup{PunctStyle=plain}%
+\ifdim#2bp>0bp\special{pdf:code q 2 Tr #2 w}\fi
+#4%
+\ifdim#2bp>0bp\special{pdf:code Q}\fi\endgroup}
+\newcommand{\NativeCover}{\clearpage\thispagestyle{empty}\input{content/cover-layout}\null\clearpage}
+\newcommand{\NativeReview}{\clearpage\thispagestyle{empty}\input{content/review-layout}\null\clearpage}

@@ -1,0 +1,53 @@
+\noindent\textbf{示例内容：科研文档规范化与质量检查（正式填写时请替换）}\par
+
+\subsection{进度安排与预期成果}
+进度安排不应只罗列日期，还应说明各阶段的交付物、依赖关系和验收条件。示例采用需求分析、方案实现、验证修正和报告归档四个阶段；实际月份与工作量需要根据培养计划和任务难度另行填写。
+
+本部分的写法强调“问题—依据—方法—验证”的对应关系。实际课题应使用明确的研究对象、应用场景和约束条件替换示例，并给出可以检查的材料来源。下文图、表和公式均为排版与论证结构演示，不包含实际实验结果。
+
+\subsection{阶段任务与里程碑}
+首先，将任务拆分为能够独立描述和检查的单元，说明每个单元需要的材料及预期输出。其次，区分已经具备的条件与仍需获取的条件，列明依赖关系。最后，用统一的记录方式保存设计选择、实施过程和检查结果，使后续分析能够追溯到具体材料。
+
+在正式报告中，应进一步解释为什么选择这些任务和指标、有哪些可比较的替代方案，以及现有条件是否足以支持计划。对于暂时无法确认的事项，应明确标注为待验证假设，而不是写成已经成立的结论。
+
+\subsection{时间预算与风险缓冲}
+以下公式仅演示变量定义、编号和交叉引用。实际使用时，应根据问题定义重新说明变量、适用条件及评价准则，不应直接沿用未经过论证的指标。
+\begin{equation}\label{eq:sample-5}
+T_{\mathrm{plan}}=\sum_{j=1}^{m}t_j+t_{\mathrm{buffer}},\qquad t_j,t_{\mathrm{buffer}}\geq0.
+\end{equation}
+式中，$t_j$ 为各阶段估计工期，$t_{\mathrm{buffer}}$ 为风险缓冲。任务能够并行时，不能直接把简单求和当作最终项目工期。公式见式~\eqref{eq:sample-5}。
+
+\subsection{图表及交叉引用示例}
+图~\ref{fig:sample-5} 展示流程关系，表~\ref{tab:sample-5} 列出计划性检查项。图表用于帮助组织材料，表内为示例要求而非实际测试结果。
+\begin{center}
+\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}[node distance=5mm,box/.style={draw,minimum height=9mm,text width=23mm,align=center,font=\songti\fontsize{10.5bp}{13bp}\selectfont},>=Latex]
+\node[box] (a) {材料整理};
+\node[box,right=of a] (b) {方案设计};
+\node[box,right=of b] (c) {过程验证};
+\node[box,right=of c] (e) {结果归档};
+\draw[->] (a)--(b);\draw[->] (b)--(c);\draw[->] (c)--(e);
+\end{tikzpicture}
+\captionof{figure}{阶段推进关系（结构演示）}\label{fig:sample-5}
+\end{minipage}\end{center}
+\begin{center}\begin{minipage}{\linewidth}\centering
+\captionof{table}{阶段安排示例（计划示例）}\label{tab:sample-5}
+\begin{tabularx}{\linewidth}{p{23mm}XX}
+\toprule
+检查对象 & 需要说明的内容 & 可检查的材料\\
+\midrule
+任务定义 & 对象、范围与边界 & 问题描述与需求清单\\
+材料来源 & 获取途径及使用条件 & 来源记录与授权说明\\
+方法选择 & 比较依据与适用条件 & 方案比较记录\\
+验证设计 & 指标、步骤和判断标准 & 测试计划与过程记录\\
+风险控制 & 关键依赖及替代路径 & 风险清单与预案\\
+结果归档 & 输出格式与可复现条件 & 报告及配套材料\\
+\bottomrule
+\end{tabularx}
+\end{minipage}\end{center}
+表格中的各项应与正文论述相互对应。若图表来自外部资料，应在图题、表题或邻近正文中给出来源；若由本人绘制，也应说明数据和方法的依据。对于较长表格，可使用已加载的 longtable 环境跨页排版，避免把整页以上的内容放入不可拆分的盒子。
+
+\subsection{本节小结}
+本部分通过文字、公式、流程图和三线表演示了进度安排与预期成果的组织方式。正式填写时，应使研究问题、实施任务、评价指标和证据材料保持一致，并删除与实际课题无关的示例。
+
+阶段结束时可据此检查：是否说明了本部分要回答的问题，是否交代了判断依据，是否列出尚待验证的事项，以及是否为下一阶段准备了必要材料。所有实际结果和进度描述均应以真实记录为准。

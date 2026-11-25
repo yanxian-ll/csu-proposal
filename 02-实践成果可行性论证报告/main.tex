@@ -1,0 +1,38 @@
+% !TeX program = xelatex
+% 纯 LaTeX 模板：封面、标题、边框、评审表及底纹均原生绘制，无 PDF 底版依赖。
+\documentclass[UTF8,zihao=5,fontset=none]{ctexart}
+\usepackage{csu-proposal}
+\input{content/form-layout}
+\input{content/info}
+% 每部分另起新页，常规文本自动续页；原生边框和标题在续页自动绘制。
+\usepackage{eso-pic}
+\geometry{paperwidth=595.2bp,paperheight=841.92bp}
+\newcommand{\flowpart}[5]{%
+\clearpage
+\ClearShipoutPictureBG
+\newgeometry{left=#2bp,right=\dimexpr\paperwidth-#2bp-#3bp\relax,top=#4bp,bottom=120bp}
+\AddToShipoutPictureBG{\csname CSUFrame\number\numexpr#1-1\relax\endcsname}
+\thispagestyle{empty}\pagestyle{empty}
+\fontsize{10.5bp}{15.6bp}\selectfont\songti
+\setlength{\parindent}{2em}\setlength{\parskip}{5bp}\raggedbottom
+\setcounter{section}{\numexpr#1-1\relax}\setcounter{subsection}{0}\setcounter{equation}{0}\setcounter{figure}{0}\setcounter{table}{0}
+\input{#5}
+\par\clearpage
+\ClearShipoutPictureBG}
+% ===== 中南大学底纹开关（两套模板均默认开启）=====
+% 不需要底纹：在下一行最前面加 %，即注释掉 \EnableCSUWatermark。
+% 需要底纹：删除行首 %，恢复下面的启用语句。
+% 该开关控制封面、所有正文续页和评审页；不会改动表格与签字位置。
+\EnableCSUWatermark
+\begin{document}
+\NativeCover
+\flowpart{2}{90.06}{414.57}{106}{content/01}
+\flowpart{3}{90.06}{414.57}{106}{content/02}
+\flowpart{4}{76.62}{432.09}{106}{content/03}
+\flowpart{5}{76.62}{432.09}{106}{content/04}
+\flowpart{6}{90.06}{428.73}{106}{content/05}
+\flowpart{7}{90.06}{428.73}{106}{content/06}
+\flowpart{8}{90.06}{428.73}{106}{content/07}
+% 第八、九、十部分原本就是一张连续表格，整页保留，签字和日期不重新排版。
+\NativeReview
+\end{document}
