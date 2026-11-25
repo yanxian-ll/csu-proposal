@@ -1,0 +1,53 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+*.xdv
+*.dvi
+*.nav
+*.snm
+*.vrb
+*.ent
+*.idx
+*.ind
+*.ilg
+*.glo
+*.gls
+*.glg
+*.acn
+*.acr
+*.alg
+*.ist
+
+# BibTeX / Biber
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*-blx.bib
+
+# Generated caches and build directories
+_minted*/
+*.pyg
+.latexmk/
+build/
+out/
+
+# Editor and OS temporary files
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Generated document (preserve other PDF assets)
+main.pdf
